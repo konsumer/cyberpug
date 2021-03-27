@@ -21,3 +21,8 @@ The discord developer-portal is [here](https://discord.com/developers/applicatio
 
 cyberpug is currently connected to our discord server, so you can see it running right away, and on glitch, you can edit the code directly in the browser, and see it update in realtime.
 
+
+
+## TODO
+
+- add [automatic deploy](https://support.glitch.com/t/tutorial-how-to-auto-update-your-project-with-github/8124) so it always matches github
