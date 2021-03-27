@@ -43,7 +43,7 @@ client.on('message', message => {
 client.on('guildMemberAdd', member => {
   const channel = member.guild.channels.cache.find(ch => ch.name === 'member-log')
   if (!channel) return
-  channel.send(`Welcome to the server, ${member}`)
+  channel.send(`Welcome to the server, ${member}. I am a demo-bot. Type !help to see what I can do.`)
 })
 
 // notify console that I am ready
