@@ -14,6 +14,9 @@ const { DISCORD_TOKEN, GITHUB_SECRET, PORT = 8000 } = process.env
 const app = express()
 // requires you to run `git remote add origin YOUR_REPO_URL` in glitch-console
 app.post('/git', (req, res) => {
+  if (req.headers['x-github-event'] === 'ping') {
+    return res.send('pong')
+  }
   const hmac = crypto.createHmac('sha1', GITHUB_SECRET)
   const sig = `sha1=${hmac.update(JSON.stringify(req.body)).digest('hex')}`
   if (req.headers['x-github-event'] === 'push' && sig === req.headers['x-hub-signature']) {
@@ -21,14 +24,14 @@ app.post('/git', (req, res) => {
       if (data) console.log(data)
       if (err) {
         console.error(err)
+        res.status(500).send('An error occurred.')
       } else {
         cmd.run('refresh')
-        res.sendStatus(200)
+        return res.send('OK.')
       }
     })
   } else {
-    res.sendStatus(500)
-    res.send('Bad git request.')
+    res.status(500).send('Bad git request.')
   }
 })
 console.log(`Webserver listening on https://localhost:${PORT}`)
