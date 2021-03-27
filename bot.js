@@ -2,8 +2,36 @@ const dotenv = require('dotenv')
 const Discord = require('discord.js')
 const { readdirSync } = require('fs')
 
+const express = require('express')
+const crypto = require('crypto')
+const cmd = require('node-cmd')
+
 dotenv.config()
-const { DISCORD_TOKEN } = process.env
+
+const { DISCORD_TOKEN, GITHUB_SECRET, PORT = 8000 } = process.env
+
+// this handles automatic pulls from github
+const app = express()
+// requires you to run `git remote add origin YOUR_REPO_URL` in glitch-console
+app.post('/git', (req, res) => {
+  const hmac = crypto.createHmac('sha1', GITHUB_SECRET)
+  const sig = `sha1=${hmac.update(JSON.stringify(req.body)).digest('hex')}`
+  if (req.headers['x-github-event'] === 'push' && sig === req.headers['x-hub-signature']) {
+    cmd.get('git fetch origin master && git reset --hard origin/master && git pull origin master --force', (err, data) => {
+      if (data) console.log(data)
+      if (err) {
+        console.error(err)
+      } else {
+        cmd.run('refresh')
+        return res.sendStatus(200)
+      }
+    })
+  }
+})
+console.log(`Webserver listening on https://localhost:${PORT}`)
+app.listen(PORT)
+
+// BOT is here
 
 if (!DISCORD_TOKEN) {
   console.error('Please set DISCORD_TOKEN environment variable!')
