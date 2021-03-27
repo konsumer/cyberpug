@@ -32,7 +32,7 @@ app.post('/github', (req, res) => {
         res.status(500).send('An error occurred.')
       } else {
         cmd.run('refresh')
-        return res.send('OK.')
+        return res.send(`OK. Current deployment is ${branch}.`)
       }
     })
   } else {
