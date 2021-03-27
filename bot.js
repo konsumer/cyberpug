@@ -23,9 +23,12 @@ app.post('/git', (req, res) => {
         console.error(err)
       } else {
         cmd.run('refresh')
-        return res.sendStatus(200)
+        res.sendStatus(200)
       }
     })
+  } else {
+    res.sendStatus(500)
+    res.send('Bad git request.')
   }
 })
 console.log(`Webserver listening on https://localhost:${PORT}`)
