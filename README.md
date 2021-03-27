@@ -2,7 +2,7 @@
 
 A demo discord bot for our cooperative programming group.
 
-You can [invite it to your own server](https://discord.com/oauth2/authorize?client_id=825469215330271283&scope=bot)
+You can [invite cyberpug to your own discord server](https://discord.com/oauth2/authorize?client_id=825469215330271283&scope=bot)
 
 ## local development
 
@@ -15,5 +15,9 @@ npm start # start the server locally
 
 ## deployment
 
-It's deployed on [Glitch](https://glitch.com/edit/#!/cyberpug) to make it easy to try out ideas and play with the server. Let me know if you want to be invited to the server. It's currently connected to our discord server, so you can see it running right away, and if you are a glitch member, you can edit stuff, directly in the browser, and see it update in realtime.
+It's deployed on [Glitch](https://glitch.com/edit/#!/cyberpug) to make it easy to try out ideas and play with the server.
+
+The discord developer-portal is [here](https://discord.com/developers/applications/825469215330271283), if you need to change the settings. Let me know if you need access.
+
+cyberpug is currently connected to our discord server, so you can see it running right away, and on glitch, you can edit the code directly in the browser, and see it update in realtime.
 
