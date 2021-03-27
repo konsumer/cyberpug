@@ -1,5 +1,7 @@
-// send back "Pong-gong-gong-gong!" to the channel the message was sent in when user says "!ping"
-
-module.exports = (message, client) => {
-  message.channel.send('Pong-gong-gong-gong!')
+module.exports = {
+  name: 'embed',
+  description: 'Test ciommand to see that cyberpug is online',
+  execute (message, args) {
+    message.channel.send('Pong-gong-gong-gong!')
+  }
 }

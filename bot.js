@@ -12,23 +12,17 @@ if (!DISCORD_TOKEN) {
 
 const client = new Discord.Client()
 
-// load all commands from commands directory and put into an object keyed by name
-const commands = readdirSync(`${__dirname}/commands`)
-  .map((r) => [r, require(`${__dirname}/commands/${r}`)])
-  .reduce((a, c) => {
-    return { ...a, [c[0].split('.')[0]]: c[1] }
-  }, {})
+// load all commands from commands directory and set them up as global commands
+readdirSync(`${__dirname}/commands`)
+  .filter(file => file.endsWith('.js'))
+  .map(r => [r, require(`${__dirname}/commands/${r}`)])
+  .forEach(r => {
+    const command = require(`${__dirname}/commands/${r}`)
+    client.commands.set(command.name, command)
+  })
 
 client.once('ready', () => {
   console.log('Ready!')
-})
-
-client.on('message', message => {
-  Object.keys(commands).forEach(command => {
-    if (message.content.startsWith(`!${command}`)) {
-      commands[command](message, client)
-    }
-  })
 })
 
 // Create an event listener for new guild members
