@@ -1,0 +1,29 @@
+{
+  "name": "cyberpug",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A demo discord bot for our cooperative programming group.",
+  "scripts": {
+    "start": "node bot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/konsumer/cyberpug.git"
+  },
+  "keywords": [],
+  "author": "David Konsumer <konsumer@jetboystudio.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/konsumer/cyberpug/issues"
+  },
+  "homepage": "https://github.com/konsumer/cyberpug#readme",
+  "dependencies": {
+    "@discordjs/opus": "^0.5.0",
+    "bufferutil": "^4.0.3",
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "erlpack": "github:discord/erlpack",
+    "sodium": "^3.0.2",
+    "utf-8-validate": "^5.0.4"
+  }
+}
