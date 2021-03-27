@@ -1,7 +1,9 @@
 module.exports = {
-  name: 'embed',
+  name: '!embed',
+
   description: 'Test ciommand to see that cyberpug is online',
-  execute (message, args) {
+
+  execute (message, args, client) {
     message.channel.send('Pong-gong-gong-gong!')
   }
 }

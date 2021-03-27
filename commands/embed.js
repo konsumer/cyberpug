@@ -1,9 +1,11 @@
 const { MessageEmbed } = require('discord.js')
 
 module.exports = {
-  name: 'embed',
+  name: '!embed',
+
   description: 'Test out embed (fancy message).',
-  execute (message, args) {
+
+  execute (message, args, client) {
     const embed = new MessageEmbed()
     // Set the title of the field
       .setTitle('A slick little embed')
