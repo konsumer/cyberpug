@@ -31,4 +31,11 @@ client.on('message', message => {
   })
 })
 
+// Create an event listener for new guild members
+client.on('guildMemberAdd', member => {
+  const channel = member.guild.channels.cache.find(ch => ch.name === 'member-log')
+  if (!channel) return
+  channel.send(`Welcome to the server, ${member}`)
+})
+
 client.login(DISCORD_TOKEN)
