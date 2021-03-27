@@ -1,7 +1,7 @@
 module.exports = {
   name: '!args-info',
 
-  description: 'Information about the arguments provided.',
+  description: 'Information about the arguments provided, for debugging.',
 
   execute (message, args, client) {
     if (!args.length) {
