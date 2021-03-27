@@ -13,7 +13,7 @@ const { DISCORD_TOKEN, GITHUB_SECRET, PORT = 8000 } = process.env
 // this handles automatic pulls from github
 const app = express()
 // requires you to run `git remote add origin YOUR_REPO_URL` in glitch-console
-app.post('/git', (req, res) => {
+app.post('/github', (req, res) => {
   if (req.headers['x-github-event'] === 'ping') {
     return res.send('pong')
   }
