@@ -20,3 +20,5 @@ It's deployed on [Glitch](https://glitch.com/edit/#!/cyberpug) to make it easy t
 The discord developer-portal is [here](https://discord.com/developers/applications/825469215330271283), if you need to change the settings. Let me know if you need access.
 
 cyberpug is currently connected to our discord server, so you can see it running right away, and on glitch, you can edit the code directly in the browser, and see it update in realtime.
+
+It is setup to auto-deploy to glitch on push to github, so it should always be up-to-date.
