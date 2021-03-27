@@ -1,5 +1,5 @@
 module.exports = {
-  name: '!embed',
+  name: '!ping',
 
   description: 'Test command to see that cyberpug is online',
 
