@@ -1,21 +1,27 @@
-const { MessageEmbed } = require('discord.js')
-
 module.exports = {
   name: '!help',
 
   description: 'Show this help',
 
   execute (message, args, client) {
-    const embed = new MessageEmbed()
-      .setTitle('CyberPug Help')
-      .setURL('https://github.com/konsumer/cyberpug')
-      .setColor(0x00ff00)
-      .setDescription("Hi, I am CyberPug, and I'm here to help. Here are the available commands:")
+    // here I use another style for embed
+    const embed = {
+      title: 'CyberPug Help',
+      url: 'https://github.com/konsumer/cyberpug',
+      color: 0x00ff00, // green
+      description: "Hi, I am CyberPug, and I'm here to help. Here are the available commands:",
+      fields: []
+    }
 
+    // collect info abotu the global commands and add them as fields
     client.commands.forEach(command => {
-      embed.addField(command.name, command.description, true)
+      embed.fields.push({
+        name: command.name,
+        value: command.description,
+        inline: false
+      })
     })
 
-    message.channel.send(embed)
+    message.channel.send({ embed })
   }
 }
