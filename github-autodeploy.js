@@ -12,6 +12,7 @@ if (!GITHUB_SECRET) {
 }
 
 const app = express()
+app.use(express.json())
 
 app.post('/github', (req, res) => {
   // always answer github pings
