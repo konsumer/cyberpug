@@ -1,5 +1,6 @@
 // This adds auto-update on push (via webhook)
 // requires you to run `git remote add origin YOUR_REPO_URL` in glitch-terminal
+// TODO: Should I do that when this loads?
 
 const express = require('express')
 const crypto = require('crypto')
