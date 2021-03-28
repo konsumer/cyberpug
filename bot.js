@@ -1,16 +1,37 @@
 const dotenv = require('dotenv')
-dotenv.config()
-
 const Discord = require('discord.js')
 const { readdirSync } = require('fs')
-require('./github-autodeploy')
+const express = require('express')
+const gh = require('./github-autodeploy')
 
-const { DISCORD_TOKEN } = process.env
+// get environemnt variables
+dotenv.config()
+const { DISCORD_TOKEN, PORT = 8000, GITHUB_SECRET } = process.env
 
+// fatal
 if (!DISCORD_TOKEN) {
   console.error('Please set DISCORD_TOKEN environment variable!')
   process.exit(1)
 }
+
+// non-fatal
+if (!GITHUB_SECRET) {
+  console.error('Github auto-deploy is disabled. Please set GITHUB_SECRET environment-variable.')
+}
+
+// WEBSERVER
+// responds at https://cyberpug.glitch.me/
+
+const app = express()
+app.use(express.json())
+
+// add /github auto-deploy webhook
+app.use(gh(GITHUB_SECRET))
+
+console.log(`Webserver listening on https://0.0.0.0:${PORT}`)
+app.listen(PORT)
+
+// BOT
 
 const client = new Discord.Client()
 client.commands = new Discord.Collection()
